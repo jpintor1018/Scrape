@@ -6,11 +6,13 @@ var ArticleSchema = new Schema({
       type: String,
       required: true
     },
+    summary:{
+        type:String,
+        required:true
+    },
     link:{
-        type:{
             type: String,
             required:true
-        }
     },
     saved: {
         type: Boolean,
@@ -22,7 +24,7 @@ var ArticleSchema = new Schema({
     }]
 });
 
-var Article = mongoose.model("Articles", ArticleSchema);
+var Article = mongoose.model("Article", ArticleSchema);
 
 module.exports = Article;
 
