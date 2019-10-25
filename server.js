@@ -7,9 +7,6 @@ var path =require("path");
 var bodyparser = require("body-parser");
 var PORT =  process.env. PORT || 3000;
 
-// Require all models
-var db = require("./models");
-
 // Initialize Express
 var app = express();
 app.use(logger("dev"));
@@ -29,6 +26,34 @@ app.set("view engine", "handlebars");
 //connect mongo DB to mongoose
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 mongoose.connect(MONGODB_URI);
+
+
+
+
+
+app.get("/scrape",function(req,res){
+
+    axios.get("https://www.buzzfeed.com/trending").then(function(response){
+      var $ = cheerio.load(response.data);
+      var results=[];
+      $("a.js-card__link").each(function(i, headline){
+        var resultsObj= {
+          title: $(headline).text(),
+          summary: $(headline).parent().siblings("p.js-card__description").text(),
+          link: $(headline).attr("href")
+        };
+        //   db.Article.create(results)
+        // .then(function(dbArticle) {
+        //   console.log(dbArticle);
+        // })
+        results.push(resultsObj);
+      });
+      res.render("index", {articles: results});
+      console.log(results);
+
+    
+    })
+    })
 //================================================
 
 require("./routes/html.js")(app);

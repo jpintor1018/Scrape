@@ -15,7 +15,7 @@
         </a>
       </li>
     </ul>
-    <button class="btn btn-outline-success my-2 my-sm-0" id="snaButton">Scrape New Articles</button>
+    <button class="btn btn-outline-success my-2 my-sm-0" id="scrapeBtn">Scrape New Articles</button>
 
   </div>
 </nav>
@@ -29,12 +29,28 @@
     <p class="lead text-center">Buzzfeed Edition</p>
   </div>
 </div>
-<div id="articles"></div>
+<div id="articles">
+  <h2 id="clickedArticles" class="text-center text-muted">Click 'Scrape New Articles' to get begin.</h2>
+  </div>
 
-<div class="articles">
+<div class="container">
+  <div class="articles">
     {{#each articles}}
-    {{>article}}
+    <div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{title}}</h5>
+                <p class="card-text">{{summary}}</p>
+                <a href="{{link}}" target="_blank" class="card-link">{{link}}</a><br>
+                <br>
+                <button type="button" class="btn btn-dark save" data-id={{_id}}>Save</button>
+            </div>
+        </div>
+    </div>
+    </div>
     {{/each}}
+  </div>
 </div>
 {{!-- Modal --}}
 

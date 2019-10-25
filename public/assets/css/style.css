@@ -1,0 +1,20 @@
+body{
+    background:url("../Images/newspaper.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+.container{
+    width:100%;
+    margin: 0 auto;
+  text-align: center;
+  padding: 3px;
+}
+.card{
+    background-color:rgba(255, 255, 255, 0.8);
+    width:75%;
+    text-align: center;
+    display: inline-block;
+}
+.articles{
+    margin:auto;
+}
