@@ -3,6 +3,9 @@ body{
     background-repeat: no-repeat;
     background-size: 100%;
 }
+h2{
+    color:black;
+}
 .container{
     width:100%;
     margin: 0 auto;
@@ -17,4 +20,10 @@ body{
 }
 .articles{
     margin:auto;
+}
+.saved-articles{
+    background-color:rgba(255, 255, 255, 0.8);
+    width:75%;
+    text-align: center;
+    display: inline-block;
 }
