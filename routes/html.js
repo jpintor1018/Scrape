@@ -97,7 +97,7 @@ module.exports = app => {
         })
 })
 
-app.get("/del-article/:id", (req,res)=>{
+app.delete("/del-article/:id", (req,res)=>{
   db.Article.remove({
     _id: mongojs.ObjectId(req.params.id)
   }, (err,del)=>{
@@ -107,8 +107,7 @@ app.get("/del-article/:id", (req,res)=>{
       console.log(del)
       res.status(200).end()
     }
-  }
-  )
+  })
 })
 
 

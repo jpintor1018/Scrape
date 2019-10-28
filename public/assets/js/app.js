@@ -32,6 +32,7 @@ $(document).ready(function () {
             method: "DELETE"
         }).then(() => window.location.href = window.location.origin + "/articles-saved")
     })
+    
     $.put = function (url, data, callback, type) {
 
         if ($.isFunction(data)) {
