@@ -25,6 +25,22 @@ $(document).ready(function () {
             .then(() => window.location.href = window.location.origin + "/articles-saved")
         });    
 
+    $(".add-Note").on("click", () =>{
+        const thisID = $(this).attr("data-id");
+        $.ajax({
+            method: "POST",
+            url:"/articles" + thisID,
+            data:{
+                body:$("#notes-text" + thisID).val()
+            }
+        }).then((data)=>{
+            console.log(data);
+            $("notes-text" + thisID).val('');
+            $("modal-notes").modal("hide");
+            window.location.href = window.location.origin + "/articles-saved"
+        })
+    })
+
     $(".del-article").on("click", (e) =>{
         const id = $(e.target).data("id")
         $.ajax({
